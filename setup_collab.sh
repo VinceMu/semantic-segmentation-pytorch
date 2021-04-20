@@ -5,10 +5,6 @@
 # change into working directory on colab
 cd /content/
 
-## install miniconda
-chmod +x ./install_miniconda.sh
-./install_miniconda.sh
-
 # setup python environment
 conda create -n semantic_segmentation python=3.5 -y
 conda install pip -y
