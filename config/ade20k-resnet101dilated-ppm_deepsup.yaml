@@ -15,7 +15,7 @@ MODEL:
   fc_dim: 2048
 
 TRAIN:
-  batch_size_per_gpu: 2
+  batch_size_per_gpu: 1
   num_epoch: 25
   start_epoch: 0
   epoch_iters: 5000

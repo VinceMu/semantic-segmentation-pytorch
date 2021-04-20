@@ -9,5 +9,8 @@ pretrained/
 
 ADE_val*.jpg
 ADE_val*.png
+ADE_train*.png
+ADE_train*.jpg
 
 .idea/
+.vscode/
