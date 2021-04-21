@@ -11,7 +11,7 @@ curl -sL \
   "Miniconda3.sh"
 
 chmod +x ./Miniconda3.sh
-./Miniconda3.sh -b
+./Miniconda3.sh --b -f -p /usr/local
 
 exec bash -l
 
