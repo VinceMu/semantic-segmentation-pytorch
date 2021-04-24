@@ -13,6 +13,4 @@ curl -sL \
 chmod +x ./Miniconda3.sh
 ./Miniconda3.sh --b -f -p /usr/local
 
-exec bash -l
-
 echo "Miniconda installed"
