@@ -5,15 +5,13 @@
 # change into working directory on colab
 cd /content/
 
-conda init bash
-
 # setup python environment
 conda create -n semantic_segmentation python=3.5 -y
-conda activate semantic_segmentation
+source activate semantic_segmentation
 conda install pip -y
 conda install pytorch=0.4.1 cuda90 -c pytorch -y
 conda install -c pytorch torchvision -y
-pip install -r requirements.txt -y
+pip install -r requirements.txt
 echo "python environment setup"
 
 # download ADE20K dataset
