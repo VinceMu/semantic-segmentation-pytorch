@@ -9,6 +9,7 @@ cd /content/
 conda create -n semantic_segmentation python=3.5 -y
 source activate semantic_segmentation
 conda install pip -y
+pip install --upgrade pip
 conda install pytorch=0.4.1 cuda90 -c pytorch -y
 conda install -c pytorch torchvision -y
 pip install -r requirements.txt
