@@ -11,6 +11,6 @@ curl -sL \
   "Miniconda3.sh"
 
 chmod +x ./Miniconda3.sh
-./Miniconda3.sh --b -f -p /usr/local
+./Miniconda3.sh -b -f -p /usr/local
 
 echo "Miniconda installed"
