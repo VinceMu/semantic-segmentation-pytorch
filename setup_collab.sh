@@ -24,3 +24,6 @@ echo "ADE20K dataset downloaded"
 python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/training ./data/ADEChallengeData2016_remasked/annotations/training
 python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/validation ./data/ADEChallengeData2016_remasked/annotations/validation
 echo "dataset remasked"
+
+cp -r ./data/ADEChallengeData2016/images ./data/ADEChallengeData2016_remasked/
+echo "images copied over to ./data/ADEChallengeData2016_remasked/"
