@@ -11,6 +11,6 @@ ADE_val*.jpg
 ADE_val*.png
 ADE_train*.png
 ADE_train*.jpg
-
+ADEChallengeData2016*/
 .idea/
 .vscode/
