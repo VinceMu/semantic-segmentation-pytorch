@@ -21,8 +21,8 @@ chmod +x ./download_ADE20K.sh
 echo "ADE20K dataset downloaded"
 
 # remask dataset for training and validation
-python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/training ./data/ADEChallengeData2016_remasked/annotations/training ./data/ADEChallengeData2016_remask/training_remask.odgt -r
-python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/validation ./data/ADEChallengeData2016_remasked/annotations/validation ./data/ADEChallengeData2016_remask/validation_remask.odgt -r
+python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/training ./data/ADEChallengeData2016_remasked/annotations/training ./data/ADEChallengeData2016_remasked/training_remask.odgt -r
+python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/annotations/validation ./data/ADEChallengeData2016_remasked/annotations/validation ./data/ADEChallengeData2016_remasked/validation_remask.odgt -r
 echo "dataset remasked"
 
 cp -r ./data/ADEChallengeData2016/images ./data/ADEChallengeData2016_remasked/
