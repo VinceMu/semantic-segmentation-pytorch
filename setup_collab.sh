@@ -2,6 +2,12 @@
 
 !(stat -t /usr/local/lib/*/dist-packages/google/colab > /dev/null 2>&1) && exit 
 
+# parse command line arguments
+skip_data_set=false
+if [ "$1" = "--skip_dataset_generation" ] || [ "$1" = "-s" ]; then
+  skip_data_set=true;
+fi
+
 # change into working directory on colab
 cd /content/
 
@@ -15,14 +21,17 @@ conda install -c pytorch torchvision -y
 pip install -r requirements.txt
 echo "python environment setup"
 
-# download ADE20K dataset
-chmod +x ./download_ADE20K.sh
-./download_ADE20K.sh
-echo "ADE20K dataset downloaded"
+if [ $skip_data_set = false ]; then
+    # download ADE20K dataset
+    chmod +x ./download_ADE20K.sh
+    ./download_ADE20K.sh
+    echo "ADE20K dataset downloaded"
 
-# remask dataset for training and validation
-python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/ ./data/ADEChallengeData2016_remask/ -r
-echo "dataset remasked"
+    # remask dataset for training and validation
+    python ./remask_dataset/parse_training_set.py ./data/ADEChallengeData2016/ ./data/ADEChallengeData2016_remasked/ -r
+    echo "dataset remasked"
 
-cp -r ./data/ADEChallengeData2016/images ./data/ADEChallengeData2016_remasked/
-echo "images copied over to ./data/ADEChallengeData2016_remasked/"
+    mkdir -p ./data/ADEChallengeData2016_remasked/images
+    cp -r ./data/ADEChallengeData2016/images ./data/ADEChallengeData2016_remasked/
+    echo "images copied over to ./data/ADEChallengeData2016_remasked/"
+fi
