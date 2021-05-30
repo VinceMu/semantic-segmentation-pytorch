@@ -21,7 +21,8 @@ conda install -c pytorch torchvision -y
 pip install -r requirements.txt
 echo "python environment setup"
 
-if [ $skip_data_set = false ]; then
+if [ $skip_data_set = false ]
+then
     # download ADE20K dataset
     chmod +x ./download_ADE20K.sh
     ./download_ADE20K.sh
