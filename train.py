@@ -14,7 +14,7 @@ from mit_semseg.dataset import TrainDataset
 from mit_semseg.models import ModelBuilder, SegmentationModule
 from mit_semseg.utils import AverageMeter, parse_devices, setup_logger
 from mit_semseg.lib.nn import UserScatteredDataParallel, user_scattered_collate, patch_replication_callback
-
+from remask_dataset.ade20k_combined.ade20k_combined_dataset import CombinedADE20kDataset
 
 # train one epoch
 def train(segmentation_module, iterator, optimizers, history, epoch, cfg):
@@ -161,7 +161,17 @@ def main(cfg, gpus):
             net_encoder, net_decoder, crit)
 
     # Dataset and Loader
-    dataset_train = TrainDataset(
+
+    # check whether to override dataset with combined classes
+    if cfg.DATASET.__dict__.get("COMBINE_DATASET"):
+        path_to_dataset = cfg.DATASET.COMBINED_DATASET.combined_classes
+        def curried_combined_dataset(root_dataset, list_train, opt, batch_per_gpu=1, **kwargs):
+            return CombinedADE20kDataset(root_dataset, path_to_dataset, list_train, opt, batch_per_gpu, kwargs)
+        dataset_init = curried_combined_dataset
+    else: 
+        dataset_init = TrainDataset
+
+    dataset_train = dataset_init(
         cfg.DATASET.root_dataset,
         cfg.DATASET.list_train,
         cfg.DATASET,
