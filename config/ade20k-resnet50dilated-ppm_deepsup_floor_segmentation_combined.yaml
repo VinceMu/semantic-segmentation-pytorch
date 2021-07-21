@@ -1,9 +1,9 @@
 DATASET:
   COMBINE_DATASET:
-    combined_classes: "./data/combined_classes/"
+    combined_classes: "./data/combined_classes/ade20k_classes_66.csv"
   root_dataset: "./data/"
-  list_train: "./data/training_remasked.odgt"
-  list_val: "./data/validation_remasked.odgt"
+  list_train: "./data/training.odgt"
+  list_val: "./data/validation.odgt"
   num_class: 2
   imgSizes: (300, 375, 450, 525, 600)
   imgMaxSize: 1000
