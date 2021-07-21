@@ -35,4 +35,5 @@ then
     mkdir -p ./data/ADEChallengeData2016_remasked/images
     cp -r ./data/ADEChallengeData2016/images ./data/ADEChallengeData2016_remasked/
     echo "images copied over to ./data/ADEChallengeData2016_remasked/"
+;
 fi
