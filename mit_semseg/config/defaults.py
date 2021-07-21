@@ -26,6 +26,10 @@ _C.DATASET.segm_downsampling_rate = 8
 # randomly horizontally flip images when train/test
 _C.DATASET.random_flip = True
 
+# use a combine_dataset_loader
+_C.DATASET.COMBINE_DATASET = CN()
+_C.DATASET.COMBINE_DATASET.combined_classes = None
+
 # -----------------------------------------------------------------------------
 # Model
 # -----------------------------------------------------------------------------
