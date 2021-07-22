@@ -3,7 +3,7 @@ import torch
 import numpy as np
 from PIL import Image
 from mit_semseg.dataset import BaseDataset, imresize
-from .combined_class_list import SegmentationClassCombiner
+from .segmentation_class_combiner import SegmentationClassCombiner
 from torchvision import transforms
 
 
@@ -104,7 +104,7 @@ class CombinedADE20kDataset(BaseDataset):
 
             img = Image.open(image_path).convert('RGB')
             # combine classes of the segmented
-            segm = self.combined_class_list.combine_segmented_image(Image.open(segm_path))
+            segm = Image.fromarray(self.combined_class_list.combine_segmented_image(Image.open(segm_path))
 
             assert(segm.mode == "L")
             assert(img.size[0] == segm.size[0])
@@ -144,3 +144,7 @@ class CombinedADE20kDataset(BaseDataset):
         output['img_data'] = batch_images
         output['seg_label'] = batch_segms
         return output
+
+    def __len__(self):
+        return int(1e10) # It's a fake length due to the trick that every loader maintains its own list
+        #return self.num_sampleclass

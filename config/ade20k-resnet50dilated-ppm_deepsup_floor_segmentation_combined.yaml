@@ -4,7 +4,7 @@ DATASET:
   root_dataset: "./data/"
   list_train: "./data/training.odgt"
   list_val: "./data/validation.odgt"
-  num_class: 2
+  num_class: 66
   imgSizes: (300, 375, 450, 525, 600)
   imgMaxSize: 1000
   padding_constant: 8

@@ -164,9 +164,9 @@ def main(cfg, gpus):
 
     # check whether to override dataset with combined classes
     if cfg.DATASET.COMBINE_DATASET.combined_classes is not None:
-        path_to_dataset = cfg.DATASET.COMBINED_DATASET.combined_classes
+        path_to_dataset = cfg.DATASET.COMBINE_DATASET.combined_classes
         def curried_combined_dataset(root_dataset, list_train, opt, batch_per_gpu=1, **kwargs):
-            return CombinedADE20kDataset(root_dataset, path_to_dataset, list_train, opt, batch_per_gpu, kwargs)
+            return CombinedADE20kDataset(root_dataset, path_to_dataset, list_train, opt, batch_per_gpu, **kwargs)
         dataset_init = curried_combined_dataset
     else: 
         dataset_init = TrainDataset
