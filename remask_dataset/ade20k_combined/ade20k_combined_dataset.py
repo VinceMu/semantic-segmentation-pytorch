@@ -104,7 +104,7 @@ class CombinedADE20kDataset(BaseDataset):
 
             img = Image.open(image_path).convert('RGB')
             # combine classes of the segmented
-            segm = Image.fromarray(self.combined_class_list.combine_segmented_image(Image.open(segm_path))
+            segm = Image.eval(Image.open(segm_path), self.combined_class_list.get_combined_class_index)
 
             assert(segm.mode == "L")
             assert(img.size[0] == segm.size[0])
