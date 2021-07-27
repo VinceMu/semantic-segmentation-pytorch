@@ -161,21 +161,23 @@ def main(cfg, gpus):
             net_encoder, net_decoder, crit)
 
     # Dataset and Loader
-
     # check whether to override dataset with combined classes
     if cfg.DATASET.COMBINE_DATASET.combined_classes is not None:
         path_to_dataset = cfg.DATASET.COMBINE_DATASET.combined_classes
-        def curried_combined_dataset(root_dataset, list_train, opt, batch_per_gpu=1, **kwargs):
-            return CombinedADE20kDataset(root_dataset, path_to_dataset, list_train, opt, batch_per_gpu, **kwargs)
-        dataset_init = curried_combined_dataset
+        dataset_train = CombinedADE20kDataset(
+          cfg.DATASET.root_dataset, 
+          path_to_dataset, 
+          cfg.DATASET.list_train, 
+          cfg.DATASET, 
+          batch_per_gpu=cfg.TRAIN.batch_size_per_gpu
+        )
     else: 
-        dataset_init = TrainDataset
-
-    dataset_train = dataset_init(
-        cfg.DATASET.root_dataset,
-        cfg.DATASET.list_train,
-        cfg.DATASET,
-        batch_per_gpu=cfg.TRAIN.batch_size_per_gpu)
+        dataset_train = TrainDataset(
+          cfg.DATASET.root_dataset,
+          cfg.DATASET.list_train,
+          cfg.DATASET,
+          batch_per_gpu=cfg.TRAIN.batch_size_per_gpu
+        )
 
     loader_train = torch.utils.data.DataLoader(
         dataset_train,

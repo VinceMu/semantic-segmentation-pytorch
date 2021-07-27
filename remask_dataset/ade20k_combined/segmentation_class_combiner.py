@@ -15,9 +15,9 @@ class SegmentationClassCombiner():
     def _initialise_class_mapping(self, path, class_separator=","):
         idx_mapping = {} # map idx -> group
         with open(path, "r") as class_groupings_file:
-            reader = csv.DictReader(class_groupings_file, delimiter =",")
+            reader = csv.DictReader(class_groupings_file, delimiter=class_separator)
             for row in reader:
-                key = row["Idx"]
-                val = row["Group"]
-                idx_mapping[key] = val 
+                key = int(row["Idx"])
+                val = int(row["Group"])
+                idx_mapping[key] = val
         return idx_mapping
