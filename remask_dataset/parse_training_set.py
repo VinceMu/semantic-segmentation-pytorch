@@ -52,7 +52,7 @@ def remask_directory(original_root, original_dir, new_dir, mapping_array):
             img = cv2.imread(path)
 
             # mapped = (mapping_func(img)).astype(np.uint8)
-            mapped = mapping_array[9]
+            mapped = mapping_array[img]
 
             new_path = os.path.join(new_dir, filename)
             cv2.imwrite(new_path, to_single_channel(mapped))
